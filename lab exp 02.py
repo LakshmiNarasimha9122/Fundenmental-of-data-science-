@@ -3,20 +3,26 @@
 
 import numpy as np
 
-# 3x3 matrix
-# Rows = Different products
-# Columns = Sales prices during the month
+rows = int(input("Enter number of products: "))
+columns = int(input("Enter number of sales prices for each product: "))
 
-sales_data = np.array([
-    [100, 120, 110],
-    [200, 180, 220],
-    [150, 160, 170]
-])
+sales_data = []
 
-# Calculate the average price of all products sold
+for i in range(rows):
+    print(f"\nEnter sales prices for Product {i + 1}:")
+    product_sales = []
+
+    for j in range(columns):
+        price = float(input(f"Price {j + 1}: "))
+        product_sales.append(price)
+
+    sales_data.append(product_sales)
+
+sales_data = np.array(sales_data)
+
 average_price = np.mean(sales_data)
 
-print("Sales Data:")
+print("\nSales Data:")
 print(sales_data)
 
 print("\nAverage Price of All Products Sold =", average_price)
