@@ -2,14 +2,19 @@
 #Question: How would you use NumPy arrays and arithmetic operations to calculate the average fuel  efficiency and determine the percentage improvement in fuel efficiency between two car models?
 
 import numpy as np
+import pandas as pd
 
-fuel_efficiency = np.array([20, 25, 30, 28, 35])
+data = pd.read_csv("fuel_efficiency.csv")
+
+fuel_efficiency = data["Fuel_Efficiency"].to_numpy()
 
 average_efficiency = np.mean(fuel_efficiency)
 
-percentage_improvement = ((fuel_efficiency[len(fuel_efficiency)-1] - fuel_efficiency[0]) / fuel_efficiency[0]) * 100
-
+percentage_improvement = (
+    (fuel_efficiency[-1] - fuel_efficiency[0])
+    / fuel_efficiency[0]
+) * 100
 
 print("Fuel Efficiency:", fuel_efficiency)
 print("Average Fuel Efficiency:", average_efficiency)
-print("Percentage Improvement:", percentage_improvement, "%")
+print("Percentage Improvement:", round(percentage_improvement, 2), "%")
