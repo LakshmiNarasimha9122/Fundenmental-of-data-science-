@@ -1,3 +1,6 @@
+#6. Scenario: You are a cashier at a grocery store and need to calculate the total cost of a customer's purchase, including applicable discounts and taxes. You have the item prices and quantities in separate  lists, and the discount and tax rates are given as percentages. Your task is to calculate the total cost for  the customer. 
+#Question: Use arithmetic operations to calculate the total cost of a customer's purchase, including discounts and taxes, given the item prices, quantities, discount rate, and tax rate? 
+
 import numpy as np
 n = int(input("Enter the number of items: "))
 
