@@ -3,22 +3,28 @@
 
 import numpy as np
 
-# Columns: Bedrooms, Square Footage, Sale Price
-house_data = np.array([
-    [3, 1200, 250000],
-    [5, 2000, 450000],
-    [4, 1800, 350000],
-    [6, 2500, 550000],
-    [5, 2200, 500000]
-])
+num_houses = int(input("Enter number of houses: "))
 
-# Select houses with more than 4 bedrooms
+house_data = []
+
+for i in range(num_houses):
+    print(f"\nEnter details for House {i + 1}:")
+    
+    bedrooms = int(input("Bedrooms: "))
+    square_footage = float(input("Square Footage: "))
+    sale_price = float(input("Sale Price: "))
+    
+    house_data.append([bedrooms, square_footage, sale_price])
+
+house_data = np.array(house_data)
+
 houses = house_data[house_data[:, 0] > 4]
 
-# Calculate average sale price
-average_price = np.mean(houses[:, 2])
-
-print("Houses with more than 4 bedrooms:")
+print("\nHouses with more than 4 bedrooms:")
 print(houses)
 
-print("\nAverage Sale Price =", average_price)
+if len(houses) > 0:
+    average_price = np.mean(houses[:, 2])
+    print("\nAverage Sale Price =", average_price)
+else:
+    print("\nNo houses with more than 4 bedrooms.")
