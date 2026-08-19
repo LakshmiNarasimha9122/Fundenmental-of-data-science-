@@ -2,25 +2,15 @@
 #Question: Using NumPy arrays and operations, how would you find the average sale price of houses  with more than four bedrooms in the neighborhood? 
 
 import numpy as np
+import pandas as pd
 
-num_houses = int(input("Enter number of houses: "))
+data = pd.read_csv("house_data.csv")
 
-house_data = []
-
-for i in range(num_houses):
-    print(f"\nEnter details for House {i + 1}:")
-    
-    bedrooms = int(input("Bedrooms: "))
-    square_footage = float(input("Square Footage: "))
-    sale_price = float(input("Sale Price: "))
-    
-    house_data.append([bedrooms, square_footage, sale_price])
-
-house_data = np.array(house_data)
+house_data = data.to_numpy()
 
 houses = house_data[house_data[:, 0] > 4]
 
-print("\nHouses with more than 4 bedrooms:")
+print("Houses with more than 4 bedrooms:")
 print(houses)
 
 if len(houses) > 0:
