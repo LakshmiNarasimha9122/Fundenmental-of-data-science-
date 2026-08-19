@@ -2,23 +2,15 @@
 #Question: Use arithmetic operations to calculate the total cost of a customer's purchase, including discounts and taxes, given the item prices, quantities, discount rate, and tax rate? 
 
 import numpy as np
-n = int(input("Enter the number of items: "))
+import pandas as pd
 
-prices = []
-quantities = []
+data = pd.read_csv("billing_data.csv")
 
-for i in range(n):
-    price = float(input(f"Enter price of item {i+1}: "))
-    quantity = int(input(f"Enter quantity of item {i+1}: "))
+prices = data["Price"].to_numpy()
+quantities = data["Quantity"].to_numpy()
 
-    prices.append(price)
-    quantities.append(quantity)
-
-prices = np.array(prices)
-quantities = np.array(quantities)
-
-discount_rate = float(input("Enter discount rate (%): "))
-tax_rate = float(input("Enter tax rate (%): "))
+discount_rate = data["Discount_Rate"].iloc[0]
+tax_rate = data["Tax_Rate"].iloc[0]
 
 subtotal = np.sum(prices * quantities)
 
@@ -30,7 +22,10 @@ tax = price_after_discount * (tax_rate / 100)
 
 total_cost = price_after_discount + tax
 
-print("Subtotal:", subtotal)
+print("Billing Data:")
+print(data)
+
+print("\nSubtotal:", subtotal)
 print("Discount:", discount)
 print("Tax:", tax)
 print("Total Cost:", total_cost)
