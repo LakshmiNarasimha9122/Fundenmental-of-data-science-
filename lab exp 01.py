@@ -1,24 +1,13 @@
 #1. Scenario: You are working on a project that involves analyzing student performance data for a class of 32 students. The data is stored in a NumPy array named student_scores, where each row represents a student and each column represents a different subject. The subjects are arranged in the  following order: Math, Science, English, and History. Your task is to calculate the average score for each subject and identify the subject with the highest average score. 
 
 import numpy as np
+import pandas as pd
 
 subjects = ['Math', 'Science', 'English', 'History']
 
-num_students = int(input("Enter number of students: "))
+data = pd.read_csv("student_scores.csv")
 
-student_scores = []
-
-for i in range(num_students):
-    print(f"\nEnter scores for Student {i + 1}:")
-    
-    math = float(input("Math: "))
-    science = float(input("Science: "))
-    english = float(input("English: "))
-    history = float(input("History: "))
-    
-    student_scores.append([math, science, english, history])
-
-student_scores = np.array(student_scores)
+student_scores = data[subjects].to_numpy()
 
 subject_averages = np.mean(student_scores, axis=0)
 
@@ -26,7 +15,7 @@ highest_avg_index = np.argmax(subject_averages)
 highest_subject = subjects[highest_avg_index]
 highest_avg_score = subject_averages[highest_avg_index]
 
-print("\nStudent Scores Matrix:")
+print("Student Scores Matrix:")
 print(student_scores)
 
 print("\nAnalysis Results:")
